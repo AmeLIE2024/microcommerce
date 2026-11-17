@@ -14,10 +14,11 @@ public class InventoryClient {
     public InventoryClient(RestClient.Builder builder, @Value("${inventory.base-url}") String baseUrl) {
         this.restClient = builder.baseUrl(baseUrl).build();
     }
-public void initializeStock(UUID productId){
+
+    public void initializeStock(UUID productId) {
         restClient.post()
                 .uri("/inventory/{productId}", productId)
                 .retrieve()
                 .toBodilessEntity();
-}
+    }
 }
